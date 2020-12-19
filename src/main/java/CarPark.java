@@ -6,13 +6,14 @@ import java.util.List;
         Dotaz na obsazenost*/
 
 public class CarPark {
-    private ArrayList<Car> listOfCars = new ArrayList<>();
+    private ArrayList<Car> listOfCars;
     private int maxCapacity;
     private int remainingCapacity;
 
     CarPark(int maxCapacity) {
         this.maxCapacity = maxCapacity;
         this.remainingCapacity = maxCapacity;
+        this. listOfCars = new ArrayList<>();
     }
 
     public List<Car> getListOfCars() {
@@ -38,11 +39,12 @@ public class CarPark {
     }
 
     public void removeCar(String carId) {
-        for (Car car : getListOfCars()) {
-            if (car.getCarId().equals(carId)) {
-                listOfCars.remove(car);
+        for (int i = 0; i < listOfCars.size(); i++) { {
+            if (listOfCars.get(i).getCarId().equals(carId)) {
+            }
                 remainingCapacity++;
-                System.out.println("Car " + car.getCarId() + " has left the parking place.");
+                System.out.println("Car " + listOfCars.get(i).getCarId() + " has left the parking place.");
+                listOfCars.remove(listOfCars.get(i));
             }
         }
     }

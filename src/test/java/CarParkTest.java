@@ -22,6 +22,12 @@ public class CarParkTest {
             }
         }
         Assertions.assertEquals(true, isAdded);
+    }
+
+    @Test
+    void addCar2() {
+        car2 = new Car("EFGH11", Car.Color.SILVER, "333222");
+        parking.addCar(car2);
         car3 = new Car("IJKL88", Car.Color.RED, "777444");
         Assertions.assertThrows(IllegalStateException.class, () -> parking.addCar(car3));
     }
@@ -36,18 +42,18 @@ public class CarParkTest {
             }
         }
         Assertions.assertEquals(true, isDeleted);
-        parking.removeCar(car1.getCarId());
-        parking.addCar(car1);
     }
 
     @Test
     void getRemainingCapacity() {
         int remainingCapacity = parking.getRemainingCapacity();
-        Assertions.assertEquals(0, remainingCapacity);
+        Assertions.assertEquals(1, remainingCapacity);
     }
 
     @Test
     void isFull() {
+        car2 = new Car("EFGH11", Car.Color.SILVER, "333222");
+        parking.addCar(car2);
         boolean status = parking.isFull();
         Assertions.assertEquals(true, status);
     }
